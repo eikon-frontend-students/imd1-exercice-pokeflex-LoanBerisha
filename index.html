@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokéFlex - Exercice Flexbox</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--
+    =====================================================
+    ATTENTION ÉTUDIANTS !
+    =====================================================
+    - NE MODIFIE PAS les noms de classes (class="...")
+    - NE MODIFIE PAS les attributs data-* (data-name, etc.)
+    - NE MODIFIE PAS le fichier app.js
+    - Tu peux modifier le texte visible si tu veux, mais c'est risqué.
+
+    TON TRAVAIL = Éditer le fichier style.css
+    =====================================================
+    -->
+
+    <!-- ===== EN-TÊTE ===== -->
+    <header class="header header-flex">
+      <h1 class="header-title">PokéFlex</h1>
+    </header>
+
+    <!-- ===== SECTION RECHERCHE ===== -->
+    <main class="main main-flex">
+      <section class="search-section search-flex">
+        <form class="search-form search-form-flex" id="search-form">
+          <label for="pokemon-input" class="search-label">
+            Rechercher un Pokémon
+          </label>
+          <div class="search-input-group search-input-flex">
+            <input
+              type="text"
+              id="pokemon-input"
+              class="search-input"
+              placeholder="Nom du Pokémon"
+              autocomplete="off"
+              required
+            />
+            <button type="submit" class="search-button">Chercher</button>
+          </div>
+          <p class="search-helper">Ex: Gruikui, Pikachu, Salamèche</p>
+        </form>
+
+        <!-- Message d'erreur (caché par défaut avec l'attribut hidden) -->
+        <div id="error-message" class="error-message" hidden>
+          <!-- Le texte d'erreur sera inséré par JavaScript -->
+        </div>
+      </section>
+
+      <!-- ===== CONTENEUR DES CARTES ===== -->
+      <section class="cards-section">
+        <div class="cards-container cards-flex" id="cards-container">
+          <!-- Les cartes Pokémon seront ajoutées ici par JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== TEMPLATE DE CARTE POKÉMON ===== -->
+    <!--
+    Ce template est cloné par JavaScript pour chaque Pokémon.
+    NE MODIFIE PAS les classes ou data-attributes !
+  -->
+    <template id="pokemon-card-template">
+      <article class="card card-flex">
+        <!-- Image du Pokémon -->
+        <div class="card-image-container card-image-flex">
+          <img
+            src=""
+            alt="Image de Pokémon"
+            class="card-image"
+            data-field="image"
+          />
+        </div>
+
+        <!-- Informations principales -->
+        <div class="card-info card-info-flex">
+          <h2 class="card-name" data-field="name">Nom du Pokémon</h2>
+          <p class="card-id">
+            <span class="card-id-label">N°</span>
+            <span class="card-id-value" data-field="id">000</span>
+          </p>
+          <p class="card-generation">
+            <span class="card-generation-label">Génération:</span>
+            <span class="card-generation-value" data-field="generation">1</span>
+          </p>
+        </div>
+
+        <!-- Types (badges) -->
+        <div class="card-types card-types-flex" data-field="types-container">
+          <!--
+          Exemple avec 2 badges de type.
+          JavaScript adaptera le nombre selon le Pokémon.
+        -->
+          <span class="type-badge" data-type="type1">Type 1</span>
+          <span class="type-badge" data-type="type2">Type 2</span>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="card-stats card-stats-flex">
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">PV</span>
+            <span class="stat-value" data-stat="hp">0</span>
+          </div>
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">Attaque</span>
+            <span class="stat-value" data-stat="attack">0</span>
+          </div>
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">Défense</span>
+            <span class="stat-value" data-stat="defense">0</span>
+          </div>
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">Attaque Spé.</span>
+            <span class="stat-value" data-stat="special-attack">0</span>
+          </div>
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">Défense Spé.</span>
+            <span class="stat-value" data-stat="special-defense">0</span>
+          </div>
+          <div class="stat-row stat-row-flex">
+            <span class="stat-label">Vitesse</span>
+            <span class="stat-value" data-stat="speed">0</span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

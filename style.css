@@ -1,0 +1,31 @@
+/*
+ * =====================================================
+ * 🦊 PokéCSS - Feuille de styles
+ * =====================================================
+ *
+ * C'EST ICI QUE TU TRAVAILLES !
+ *
+ * Objectif : Utilise CSS Flexbox pour mettre en page
+ * l'application Pokémon.
+ *
+ * Conseils :
+ * - Cherche les classes qui contiennent "-flex" dans leur nom
+ *   Ce sont des conteneurs qui pourraient utiliser display: flex
+ *
+ * - Classes importantes :
+ *   .header-flex        -> En-tête de la page
+ *   .main-flex          -> Conteneur principal
+ *   .search-flex        -> Section de recherche
+ *   .search-form-flex   -> Formulaire de recherche
+ *   .search-input-flex  -> Groupe input + bouton
+ *   .cards-flex         -> Conteneur des cartes Pokémon
+ *   .card-flex          -> Une carte Pokémon
+ *   .card-image-flex    -> Conteneur de l'image
+ *   .card-info-flex     -> Infos principales (nom, id, génération)
+ *   .card-types-flex    -> Conteneur des badges de type
+ *   .card-stats-flex    -> Conteneur des statistiques
+ *   .stat-row-flex      -> Une ligne de statistique (label + valeur)
+ *
+ * Bon courage ! 🎨
+ * =====================================================
+ */
