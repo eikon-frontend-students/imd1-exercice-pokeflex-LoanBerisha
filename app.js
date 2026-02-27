@@ -275,6 +275,7 @@
         const badge = document.createElement("span");
         badge.className = "type-badge";
         badge.textContent = typeName;
+        badge.dataset.type = typeName.toLowerCase();
         typesContainer.appendChild(badge);
       });
     }

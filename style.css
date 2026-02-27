@@ -1,315 +1,215 @@
-/* =====================================================
-   🎨 PokéFlex - Design "Ultra Moderne" (Image de référence)
-   ===================================================== */
-
-/* --- VARIABLES & RESET --- */
-:root {
-  /* Le dégradé exact de l'image */
-  --header-gradient: linear-gradient(
-    90deg,
-    #1a2a6c 0%,
-    #b21f1f 50%,
-    #fdbb2d 100%
-  );
-  /* Alternative plus proche de l'image fournie (bleu foncé -> bleu roi -> jaune) */
-  --poke-gradient: linear-gradient(
-    135deg,
-    #2a38b1 0%,
-    #3b4cca 45%,
-    #ffcc00 100%
-  );
-  --card-bg: #ffffff;
-  --main-bg: #f4f7f6;
-  --text-dark: #333;
-  --pokeblue: #3b4cca;
-}
-
 * {
   box-sizing: border-box;
-  font-family:
-    "Poppins", "Segoe UI", Tahoma, sans-serif; /* Police plus moderne si dispo */
+  margin: 0;
+  padding: 0;
+  font-family: Pixelify Sans;
 }
 
 body {
-  margin: 0;
-  background-color: var(--main-bg);
-  color: var(--text-dark);
+  background: url("../9397272.jpg") no-repeat center center fixed;
+  background-size: cover;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* =========================
-   HEADER & SEARCH FUSIONNÉS
-========================= */
-
-/* 1. Le Header */
 .header-flex {
   display: flex;
-  justify-content: center; /* Centre le logo horizontalement */
+  justify-content: space-between;
   align-items: center;
-  /* Applique la partie haute du dégradé */
-  background: var(--poke-gradient);
-  padding: 1.5rem 1rem 0 1rem; /* Pas de padding bas pour coller à la recherche */
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* ON CACHE LE TITRE "PokéFlex" comme demandé */
 .header-title {
-  display: none;
+  color: #3256b6;
+  stroke: #000;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-/* Style du logo centré */
 .header-flex img {
-  height: 80px; /* Taille ajustée */
-  width: auto;
-  /* Petit effet d'ombre portée pour le faire ressortir sur le dégradé */
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
+  height: 55px;
 }
 
-/* 2. La Section Recherche (qui fusionne visuellement avec le header) */
 .search-flex {
-  /* MÊME dégradé que le header pour l'illusion d'un bloc unique */
-  background: var(--poke-gradient);
-  padding: 1rem 1rem 4rem 1rem; /* Grand padding bas pour l'espace coloré sous la barre */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 1rem 5rem;
 }
 
 .search-form-flex {
   width: 100%;
-  max-width: 600px; /* Largeur max de la barre */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  max-width: 550px;
 }
 
 .search-label {
-  color: white;
-  font-weight: 500;
-  margin-left: 1rem; /*Aligné avec le début de l'input arrondi */
+  color: #3256b6;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
-/* Le conteneur input + bouton (style pilule blanche) */
 .search-input-flex {
   display: flex;
   background: white;
-  border-radius: 50px; /* Bords très ronds */
-  padding: 5px; /* Espace entre le bord blanc et le bouton bleu */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  padding: 4px;
 }
 
 .search-input {
   flex: 1;
   border: none;
-  border-radius: 50px 0 0 50px;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 40px;
   outline: none;
 }
 
 .search-button {
-  background: var(--pokeblue);
-  color: white;
   border: none;
-  border-radius: 50px; /* Bouton complètement rond */
-  padding: 0.8rem 2rem;
-  font-weight: bold;
-  font-size: 0.9rem;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 40px;
   cursor: pointer;
-  transition:
-    transform 0.2s,
-    background 0.2s;
-}
-
-.search-button:hover {
-  background: #2a38b1;
-  transform: scale(1.05);
 }
 
 .search-helper {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.8rem;
-  margin-left: 1rem;
-  margin-top: 0.5rem;
-}
-
-/* =========================
-   MAIN & CARDS CONTAINER
-========================= */
-.main-flex {
-  /* Le fond gris clair commence ici */
-  background: var(--main-bg);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  color: #3256b6;
+  font-size: 0.75rem;
+  margin-top: 0.6rem;
 }
 
 .cards-flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem;
-  /* On fait remonter les cartes sur le header coloré avec une marge négative */
+  gap: 2rem;
   margin-top: -3rem;
   padding: 2rem;
 }
 
-/* =========================
-   CARTE POKÉMON (Style Moderne)
-========================= */
 .card-flex {
-  display: flex;
-  flex-direction: column;
-  width: 300px; /* Cartes un peu plus larges */
-  background: var(--card-bg);
-  /* Très gros arrondis comme sur l'image */
-  border-radius: 30px;
-  padding: 2rem;
-  /* Ombre douce et diffuse */
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  border: none;
+  width: 280px;
+  background: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 4px solid #71b097;
+
+  box-shadow:
+    4px 0 0 #000,
+    -4px 0 0 #fefbca,
+    0 4px 0 #000,
+    0 -4px 0 #fefbca;
+
+  transition: transform 0.2s ease;
 }
 
 .card-flex:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
 }
 
-/* Conteneur de l'image (le cercle coloré derrière le Pokémon) */
+.card-flex:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
 .card-image-flex {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: #f5f7fa;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 1.5rem auto; /* Centré horizontalement */
-  /* Création du cercle */
-  border-radius: 50%;
-  /* Un fond dégradé neutre par défaut pour le cercle */
-  background: linear-gradient(to top right, #dfe9f3 0%, #ffffff 100%);
-  box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card-image {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  /* Légère ombre portée sur le Pokémon lui-même pour le détacher du fond */
-  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
-}
-
-/* Infos (Nom, ID) */
-.card-info-flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
 }
 
 .card-name {
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
   text-transform: capitalize;
 }
 
-.card-id,
-.card-generation {
-  margin: 0;
-  color: #95a5a6;
-  font-weight: 600;
-  font-size: 0.9rem;
+.card-id {
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Types (Badges) */
+.card-generation {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
 .card-types-flex {
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
-  margin: 1.5rem 0;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .type-badge {
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: white;
-  background: #95a5a6; /* Gris par défaut si pas de type spécifique */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #999;
 }
 
-/* Couleurs pour quelques types communs pour que ce soit joli */
-[data-type="Feu"] {
+[data-type="feu"] {
   background: #ff5722;
 }
-[data-type="Eau"] {
+[data-type="eau"] {
   background: #2196f3;
 }
-[data-type="Plante"] {
+[data-type="plante"] {
   background: #4caf50;
 }
-[data-type="Électrik"] {
+[data-type="électrik"],
+[data-type="electrik"] {
   background: #ffc107;
   color: #333;
 }
-[data-type="Poison"] {
+[data-type="poison"] {
   background: #9c27b0;
 }
 
-/* Stats (Adaptation propre sans modifier le HTML) */
 .card-stats-flex {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid #f0f2f5;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
 }
 
 .stat-row-flex {
   display: flex;
-  justify-content: space-between; /* Label à gauche, Valeur à droite */
-  align-items: center;
-  font-size: 0.9rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
 .stat-label {
-  color: #7f8c8d;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
+  color: #777;
 }
 
 .stat-value {
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--pokeblue); /* Chiffres en bleu */
+  font-weight: 600;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 700px) {
   .card-flex {
-    width: 100%; /* Cartes pleine largeur sur mobile */
+    width: 100%;
     max-width: 320px;
   }
 
-  .search-flex {
-    padding-bottom: 3rem;
-  }
-
-  .cards-flex {
-    margin-top: -2rem;
-    padding: 1rem;
+  body {
+    background-size: 100% 450px;
   }
 }
 
