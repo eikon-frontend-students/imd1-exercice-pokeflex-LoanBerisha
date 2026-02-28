@@ -1,3 +1,13 @@
+:root {
+  --color-primary: #3256b6;
+  --bg-card: #fff;
+  --bg-input: #fff;
+  --bg-chip: #ffffffd9;
+  --text-main: #333;
+  --text-muted: #777;
+  --border-light: #eee;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,8 +31,7 @@ body {
 }
 
 .header-title {
-  color: #3256b6;
-  stroke: #000;
+  color: var(--color-primary);
   font-size: 1.8rem;
   font-weight: 700;
 }
@@ -35,7 +44,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 1rem 5rem;
+  padding: 1rem 1rem 1.5rem;
 }
 
 .search-form-flex {
@@ -44,14 +53,15 @@ body {
 }
 
 .search-label {
-  color: #3256b6;
-  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
   font-size: 0.9rem;
 }
 
 .search-input-flex {
   display: flex;
-  background: white;
+  background: var(--bg-input);
   border-radius: 40px;
   padding: 4px;
 }
@@ -62,20 +72,68 @@ body {
   padding: 0.7rem 1rem;
   border-radius: 40px;
   outline: none;
+  background: transparent;
+  color: var(--text-main);
 }
 
 .search-button {
   border: none;
+  background: var(--color-primary);
   color: white;
   padding: 0.7rem 1.5rem;
   border-radius: 40px;
   cursor: pointer;
+  transition: background 0.15s;
+}
+
+.search-button:hover {
+  background: #1e3d8f;
+}
+
+.search-button:disabled {
+  background: #7a96d4;
+  cursor: not-allowed;
 }
 
 .search-helper {
-  color: #3256b6;
+  color: var(--color-primary);
   font-size: 0.75rem;
   margin-top: 0.6rem;
+}
+
+.search-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.history-chip {
+  border: none;
+  background: var(--bg-chip);
+  color: var(--color-primary);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.history-chip:hover {
+  background: white;
+}
+
+.error-message {
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  background: #fff3f3;
+  border: 1px solid #f5a5a5;
+  border-radius: 8px;
+  color: #c0392b;
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 .cards-flex {
@@ -87,12 +145,25 @@ body {
   padding: 2rem;
 }
 
+@keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card-flex {
+  position: relative;
   width: 280px;
-  background: white;
+  background: var(--bg-card);
+  color: var(--text-main);
   padding: 2rem 1.5rem;
   text-align: center;
-  border: 4px solid #71b097;
+  border: 4px solid var(--type-color, #71b097);
 
   box-shadow:
     4px 0 0 #000,
@@ -101,15 +172,57 @@ body {
     0 -4px 0 #fefbca;
 
   transition: transform 0.2s ease;
-}
-
-.card-flex:hover {
-  transform: scale(1.05);
+  animation: card-appear 0.35s ease both;
 }
 
 .card-flex:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px #0000001a;
+}
+
+[data-primary-type="feu"]      { --type-color: #ff5722; background: #fff8f6; }
+[data-primary-type="eau"]      { --type-color: #2196f3; background: #f0f8ff; }
+[data-primary-type="plante"]   { --type-color: #4caf50; background: #f0fff0; }
+[data-primary-type="électrik"],
+[data-primary-type="electrik"] { --type-color: #ffc107; background: #fffbf0; }
+[data-primary-type="poison"]   { --type-color: #9c27b0; background: #fdf0ff; }
+[data-primary-type="psy"]      { --type-color: #f85888; background: #fff0f5; }
+[data-primary-type="normal"]   { --type-color: #a8a898; background: #f8f8f8; }
+[data-primary-type="glace"]    { --type-color: #69bfbf; background: #f0feff; }
+[data-primary-type="sol"]      { --type-color: #d8a040; background: #fef8f0; }
+[data-primary-type="roche"]    { --type-color: #b8a050; background: #fef8f0; }
+[data-primary-type="insecte"]  { --type-color: #90a820; background: #f8faf0; }
+[data-primary-type="vol"]      { --type-color: #8090d8; background: #f0f0ff; }
+[data-primary-type="combat"]   { --type-color: #d03830; background: #fff0f0; }
+[data-primary-type="spectre"]  { --type-color: #606898; background: #f5f0ff; }
+[data-primary-type="dragon"]   { --type-color: #6028d8; background: #f0f0ff; }
+[data-primary-type="acier"]    { --type-color: #98a0b8; background: #f0f0f8; }
+[data-primary-type="ténèbres"],
+[data-primary-type="tenebres"] { --type-color: #706050; background: #f8f5f2; }
+[data-primary-type="fée"],
+[data-primary-type="fee"]      { --type-color: #d890a0; background: #fff0f5; }
+
+.card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform 0.15s;
+}
+
+.card-close-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.card-close:hover {
+  transform: scale(1.15);
 }
 
 .card-image-flex {
@@ -143,7 +256,7 @@ body {
 
 .card-generation {
   font-size: 0.75rem;
-  color: #888;
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
@@ -163,84 +276,179 @@ body {
   background: #999;
 }
 
-[data-type="feu"] {
-  background: #ff5722;
-}
-[data-type="eau"] {
-  background: #2196f3;
-}
-[data-type="plante"] {
-  background: #4caf50;
-}
-[data-type="électrik"],
-[data-type="electrik"] {
-  background: #ffc107;
-  color: #333;
-}
-[data-type="poison"] {
-  background: #9c27b0;
-}
+[data-type="feu"]                              { background: #ff5722; }
+[data-type="eau"]                              { background: #2196f3; }
+[data-type="plante"]                           { background: #4caf50; }
+[data-type="électrik"], [data-type="electrik"] { background: #ffc107; color: #333; }
+[data-type="poison"]                           { background: #9c27b0; }
+[data-type="psy"]                              { background: #f85888; }
+[data-type="normal"]                           { background: #a8a898; }
+[data-type="glace"]                            { background: #69bfbf; }
+[data-type="sol"]                              { background: #d8a040; }
+[data-type="roche"]                            { background: #b8a050; }
+[data-type="insecte"]                          { background: #90a820; }
+[data-type="vol"]                              { background: #8090d8; }
+[data-type="combat"]                           { background: #d03830; }
+[data-type="spectre"]                          { background: #606898; }
+[data-type="dragon"]                           { background: #6028d8; }
+[data-type="acier"]                            { background: #98a0b8; }
+[data-type="ténèbres"], [data-type="tenebres"] { background: #706050; }
+[data-type="fée"], [data-type="fee"]           { background: #d890a0; }
 
 .card-stats-flex {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-light);
 }
 
 .stat-row-flex {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.8rem;
   margin-bottom: 0.4rem;
 }
 
 .stat-label {
-  color: #777;
+  width: 80px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.stat-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border-light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.5s ease;
 }
 
 .stat-value {
+  width: 28px;
+  text-align: right;
   font-weight: 600;
 }
 
-@media (max-width: 700px) {
-  .card-flex {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  body {
-    background-size: 100% 450px;
-  }
+.top-searched {
+  padding: 0.5rem 2rem 2rem;
+  text-align: center;
 }
 
-/*
- * =====================================================
- * 🦊 PokéCSS - Feuille de styles
- * =====================================================
- *
- * C'EST ICI QUE TU TRAVAILLES !
- *
- * Objectif : Utilise CSS Flexbox pour mettre en page
- * l'application Pokémon.
- *
- * Conseils :
- * - Cherche les classes qui contiennent "-flex" dans leur nom
- *   Ce sont des conteneurs qui pourraient utiliser display: flex
- *
- * - Classes importantes :
- *   .header-flex        -> En-tête de la page
- *   .main-flex          -> Conteneur principal
- *   .search-flex        -> Section de recherche
- *   .search-form-flex   -> Formulaire de recherche
- *   .search-input-flex  -> Groupe input + bouton
- *   .cards-flex         -> Conteneur des cartes Pokémon
- *   .card-flex          -> Une carte Pokémon
- *   .card-image-flex    -> Conteneur de l'image
- *   .card-info-flex     -> Infos principales (nom, id, génération)
- *   .card-types-flex    -> Conteneur des badges de type
- *   .card-stats-flex    -> Conteneur des statistiques
- *   .stat-row-flex      -> Une ligne de statistique (label + valeur)
- *
- * Bon courage ! 🎨
- * =====================================================
- */
+.top-searched-title {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.top-searched-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.top-searched-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.top-searched-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #71b097;
+  padding: 4px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.top-searched-item:hover .top-searched-img {
+  border-color: var(--color-primary);
+  transform: scale(1.08);
+}
+
+.top-searched-name {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.type-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.5rem 2rem 2rem;
+}
+
+.type-filter-btn {
+  border: 2px solid var(--border-light);
+  background: var(--bg-chip);
+  color: var(--text-muted);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.type-filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.type-filter-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+@media (max-width: 700px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .header-flex {
+    padding: 1rem;
+  }
+
+  .header-title {
+    font-size: 1.3rem;
+  }
+
+  .header-flex img {
+    height: 38px;
+  }
+
+  .search-flex {
+    padding: 1rem 1rem 2rem;
+  }
+
+  .search-form-flex {
+    max-width: 100%;
+  }
+
+  .cards-flex {
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: -1rem;
+  }
+
+  .card-flex {
+    width: 100%;
+    max-width: 360px;
+  }
+}
