@@ -148,64 +148,6 @@ body {
     0 -4px 0 #fefbca;
 }
 
-[data-primary-type="feu"] {
-  border-color: #ff5722;
-}
-[data-primary-type="eau"] {
-  border-color: #2196f3;
-}
-[data-primary-type="plante"] {
-  border-color: #4caf50;
-}
-[data-primary-type="électrik"],
-[data-primary-type="electrik"] {
-  border-color: #ffc107;
-}
-[data-primary-type="poison"] {
-  border-color: #9c27b0;
-}
-[data-primary-type="psy"] {
-  border-color: #f85888;
-}
-[data-primary-type="normal"] {
-  border-color: #a8a898;
-}
-[data-primary-type="glace"] {
-  border-color: #69bfbf;
-}
-[data-primary-type="sol"] {
-  border-color: #d8a040;
-}
-[data-primary-type="roche"] {
-  border-color: #b8a050;
-}
-[data-primary-type="insecte"] {
-  border-color: #90a820;
-}
-[data-primary-type="vol"] {
-  border-color: #8090d8;
-}
-[data-primary-type="combat"] {
-  border-color: #d03830;
-}
-[data-primary-type="spectre"] {
-  border-color: #606898;
-}
-[data-primary-type="dragon"] {
-  border-color: #6028d8;
-}
-[data-primary-type="acier"] {
-  border-color: #98a0b8;
-}
-[data-primary-type="ténèbres"],
-[data-primary-type="tenebres"] {
-  border-color: #706050;
-}
-[data-primary-type="fée"],
-[data-primary-type="fee"] {
-  border-color: #d890a0;
-}
-
 .card-close {
   position: absolute;
   top: 8px;
@@ -222,10 +164,6 @@ body {
   height: 28px;
   object-fit: contain;
   display: block;
-}
-
-.card-close:hover {
-  transform: scale(1.15);
 }
 
 .card-image-flex {
@@ -279,69 +217,29 @@ body {
   background: #999;
 }
 
-[data-type="feu"] {
-  background: #ff5722;
-}
-[data-type="eau"] {
-  background: #2196f3;
-}
-[data-type="plante"] {
-  background: #4caf50;
-}
-[data-type="électrik"],
-[data-type="electrik"] {
-  background: #ffc107;
-  color: #333;
-}
-[data-type="poison"] {
-  background: #9c27b0;
-}
-[data-type="psy"] {
-  background: #f85888;
-}
-[data-type="normal"] {
-  background: #a8a898;
-}
-[data-type="glace"] {
-  background: #69bfbf;
-}
-[data-type="sol"] {
-  background: #d8a040;
-}
-[data-type="roche"] {
-  background: #b8a050;
-}
-[data-type="insecte"] {
-  background: #90a820;
-}
-[data-type="vol"] {
-  background: #8090d8;
-}
-[data-type="combat"] {
-  background: #d03830;
-}
-[data-type="spectre"] {
-  background: #606898;
-}
-[data-type="dragon"] {
-  background: #6028d8;
-}
-[data-type="acier"] {
-  background: #98a0b8;
-}
-[data-type="ténèbres"],
-[data-type="tenebres"] {
-  background: #706050;
-}
-[data-type="fée"],
-[data-type="fee"] {
-  background: #d890a0;
-}
+[data-type="feu"]                              { background: #ff5722; }
+[data-type="eau"]                              { background: #2196f3; }
+[data-type="plante"]                           { background: #4caf50; }
+[data-type="électrik"], [data-type="electrik"] { background: #ffc107; color: #333; }
+[data-type="poison"]                           { background: #9c27b0; }
+[data-type="psy"]                              { background: #f85888; }
+[data-type="normal"]                           { background: #a8a898; }
+[data-type="glace"]                            { background: #69bfbf; }
+[data-type="sol"]                              { background: #d8a040; }
+[data-type="roche"]                            { background: #b8a050; }
+[data-type="insecte"]                          { background: #90a820; }
+[data-type="vol"]                              { background: #8090d8; }
+[data-type="combat"]                           { background: #d03830; }
+[data-type="spectre"]                          { background: #606898; }
+[data-type="dragon"]                           { background: #6028d8; }
+[data-type="acier"]                            { background: #98a0b8; }
+[data-type="ténèbres"], [data-type="tenebres"] { background: #706050; }
+[data-type="fée"], [data-type="fee"]           { background: #d890a0; }
 
 .card-stats-flex {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #ffffff;
+  border-top: 1px solid #eee;
 }
 
 .stat-row-flex {
@@ -413,11 +311,6 @@ body {
   background: #fff;
   border: 3px solid #71b097;
   padding: 4px;
-}
-
-.top-searched-item:hover .top-searched-img {
-  border-color: #3256b6;
-  transform: scale(1.08);
 }
 
 .top-searched-name {
