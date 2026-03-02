@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url("../9397272.jpg") no-repeat center center fixed;
+  background: url("9397272.jpg") no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
 }
@@ -217,24 +217,64 @@ body {
   background: #999;
 }
 
-[data-type="feu"]                              { background: #ff5722; }
-[data-type="eau"]                              { background: #2196f3; }
-[data-type="plante"]                           { background: #4caf50; }
-[data-type="électrik"], [data-type="electrik"] { background: #ffc107; color: #333; }
-[data-type="poison"]                           { background: #9c27b0; }
-[data-type="psy"]                              { background: #f85888; }
-[data-type="normal"]                           { background: #a8a898; }
-[data-type="glace"]                            { background: #69bfbf; }
-[data-type="sol"]                              { background: #d8a040; }
-[data-type="roche"]                            { background: #b8a050; }
-[data-type="insecte"]                          { background: #90a820; }
-[data-type="vol"]                              { background: #8090d8; }
-[data-type="combat"]                           { background: #d03830; }
-[data-type="spectre"]                          { background: #606898; }
-[data-type="dragon"]                           { background: #6028d8; }
-[data-type="acier"]                            { background: #98a0b8; }
-[data-type="ténèbres"], [data-type="tenebres"] { background: #706050; }
-[data-type="fée"], [data-type="fee"]           { background: #d890a0; }
+[data-type="feu"] {
+  background: #ff5722;
+}
+[data-type="eau"] {
+  background: #2196f3;
+}
+[data-type="plante"] {
+  background: #4caf50;
+}
+[data-type="électrik"],
+[data-type="electrik"] {
+  background: #ffc107;
+  color: #333;
+}
+[data-type="poison"] {
+  background: #9c27b0;
+}
+[data-type="psy"] {
+  background: #f85888;
+}
+[data-type="normal"] {
+  background: #a8a898;
+}
+[data-type="glace"] {
+  background: #69bfbf;
+}
+[data-type="sol"] {
+  background: #d8a040;
+}
+[data-type="roche"] {
+  background: #b8a050;
+}
+[data-type="insecte"] {
+  background: #90a820;
+}
+[data-type="vol"] {
+  background: #8090d8;
+}
+[data-type="combat"] {
+  background: #d03830;
+}
+[data-type="spectre"] {
+  background: #606898;
+}
+[data-type="dragon"] {
+  background: #6028d8;
+}
+[data-type="acier"] {
+  background: #98a0b8;
+}
+[data-type="ténèbres"],
+[data-type="tenebres"] {
+  background: #706050;
+}
+[data-type="fée"],
+[data-type="fee"] {
+  background: #d890a0;
+}
 
 .card-stats-flex {
   margin-top: 1rem;
