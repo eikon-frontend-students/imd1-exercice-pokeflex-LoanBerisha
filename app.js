@@ -12,7 +12,7 @@
   let activeTypeFilter = null;
   let searchForm, pokemonInput, errorMessage, cardsContainer, cardTemplate, searchHistory, topSearchedSection;
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     searchForm = document.getElementById("search-form");
     pokemonInput = document.getElementById("pokemon-input");
     errorMessage = document.getElementById("error-message");
@@ -30,7 +30,7 @@
     renderHistory();
     loadDefaultTop();
 
-    if (DEFAULT_POKEMON?.trim()) {
+    if (DEFAULT_POKEMON && DEFAULT_POKEMON.trim()) {
       loadDefaultPokemon(DEFAULT_POKEMON.trim());
     }
   });
@@ -71,13 +71,13 @@
     btn.type = "button";
     btn.className = "type-filter-btn" + (activeTypeFilter === type ? " active" : "");
     btn.textContent = label;
-    btn.addEventListener("click", () => setTypeFilter(type));
+    btn.addEventListener("click", function () { setTypeFilter(type); });
     return btn;
   }
 
   function setTypeFilter(type) {
     activeTypeFilter = type;
-    cardsContainer.querySelectorAll(".card").forEach(card => {
+    cardsContainer.querySelectorAll(".card").forEach(function (card) {
       card.hidden = type !== null && !(card.dataset.types || "").split(" ").includes(type);
     });
     updateTypeFilters();
@@ -87,18 +87,18 @@
     const container = document.getElementById("type-filters");
     if (!container) return;
     const types = new Set();
-    cardsContainer.querySelectorAll(".card").forEach(card => {
-      (card.dataset.types || "").split(" ").filter(Boolean).forEach(t => types.add(t));
+    cardsContainer.querySelectorAll(".card").forEach(function (card) {
+      (card.dataset.types || "").split(" ").filter(Boolean).forEach(function (t) { types.add(t); });
     });
     if (activeTypeFilter && !types.has(activeTypeFilter)) {
       activeTypeFilter = null;
-      cardsContainer.querySelectorAll(".card").forEach(c => { c.hidden = false; });
+      cardsContainer.querySelectorAll(".card").forEach(function (c) { c.hidden = false; });
     }
     container.hidden = types.size === 0;
     if (types.size === 0) return;
     container.innerHTML = "";
     container.appendChild(makeFilterBtn("Tous", null));
-    types.forEach(type => {
+    types.forEach(function (type) {
       container.appendChild(makeFilterBtn(type.charAt(0).toUpperCase() + type.slice(1), type));
     });
   }
@@ -109,7 +109,9 @@
   }
 
   function saveToHistory(name) {
-    const history = [name, ...loadHistory().filter(h => h.toLowerCase() !== name.toLowerCase())].slice(0, HISTORY_MAX);
+    const history = [name, ...loadHistory().filter(function (h) {
+      return h.toLowerCase() !== name.toLowerCase();
+    })].slice(0, HISTORY_MAX);
     try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); } catch (e) {}
     renderHistory();
   }
@@ -117,12 +119,12 @@
   function renderHistory() {
     if (!searchHistory) return;
     searchHistory.innerHTML = "";
-    loadHistory().forEach(name => {
+    loadHistory().forEach(function (name) {
       const chip = document.createElement("button");
       chip.type = "button";
       chip.className = "history-chip";
       chip.textContent = name;
-      chip.addEventListener("click", () => searchPokemon(name));
+      chip.addEventListener("click", function () { searchPokemon(name); });
       searchHistory.appendChild(chip);
     });
   }
@@ -152,11 +154,14 @@
     if (!topSearchedSection) return;
     const counts = loadCounts();
     const names = Object.keys(counts).length > 0
-      ? Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name]) => name)
-      : DEFAULT_TOP.map(n => n.toLowerCase());
+      ? Object.entries(counts)
+          .sort(function (a, b) { return b[1] - a[1]; })
+          .slice(0, 5)
+          .map(function (entry) { return entry[0]; })
+      : DEFAULT_TOP.map(function (n) { return n.toLowerCase(); });
 
     const top = [...new Set(names)]
-      .map(name => {
+      .map(function (name) {
         const cached = getFromCache(name);
         return cached ? { name: cached.name || name, image: cached.image || "" } : null;
       })
@@ -167,10 +172,10 @@
 
     const list = topSearchedSection.querySelector(".top-searched-list");
     list.innerHTML = "";
-    top.forEach(pokemon => {
+    top.forEach(function (pokemon) {
       const item = document.createElement("div");
       item.className = "top-searched-item";
-      item.addEventListener("click", () => searchPokemon(pokemon.name));
+      item.addEventListener("click", function () { searchPokemon(pokemon.name); });
       const img = document.createElement("img");
       img.src = pokemon.image;
       img.alt = pokemon.name;
@@ -202,7 +207,7 @@
     const cached = getFromCache(name);
     if (cached) return cached;
 
-    const response = await fetch(API_BASE_URL + encodeURIComponent(name)).catch(() => {
+    const response = await fetch(API_BASE_URL + encodeURIComponent(name)).catch(function () {
       throw new Error("Erreur de connexion. Vérifie ta connexion internet.");
     });
 
@@ -232,10 +237,10 @@
     const typesContainer = card.querySelector('[data-field="types-container"]');
     if (typesContainer) {
       const types = extractTypes(pokemon);
-      card.dataset.types = types.map(t => t.toLowerCase()).join(" ");
+      card.dataset.types = types.map(function (t) { return t.toLowerCase(); }).join(" ");
       card.dataset.primaryType = (types[0] || "").toLowerCase();
       typesContainer.innerHTML = "";
-      types.forEach(typeName => {
+      types.forEach(function (typeName) {
         const badge = document.createElement("span");
         badge.className = "type-badge";
         badge.textContent = typeName;
@@ -252,29 +257,32 @@
       ["special-attack", stats.specialAttack],
       ["special-defense", stats.specialDefense],
       ["speed", stats.speed],
-    ].forEach(([key, val]) => {
-      const valEl = card.querySelector(`[data-stat="${key}"]`);
-      if (valEl) valEl.textContent = val;
-      const bar = card.querySelector(`[data-stat-bar="${key}"]`);
-      if (!bar || typeof val !== "number") return;
-      const pct = Math.min(100, Math.round((val / 255) * 100));
+    ].forEach(function (pair) {
+      const valEl = card.querySelector(`[data-stat="${pair[0]}"]`);
+      if (valEl) valEl.textContent = pair[1];
+      const bar = card.querySelector(`[data-stat-bar="${pair[0]}"]`);
+      if (!bar || typeof pair[1] !== "number") return;
+      const pct = Math.min(100, Math.round((pair[1] / 255) * 100));
       bar.style.width = pct + "%";
-      bar.style.background = val < 50 ? "#e74c3c" : val < 90 ? "#f39c12" : "#2ecc71";
+      bar.style.background = pair[1] < 50 ? "#e74c3c" : pair[1] < 90 ? "#f39c12" : "#2ecc71";
     });
 
-    card.querySelector(".card-close")?.addEventListener("click", () => {
-      card.remove();
-      setTypeFilter(activeTypeFilter);
-    });
+    const closeBtn = card.querySelector(".card-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        card.remove();
+        setTypeFilter(activeTypeFilter);
+      });
+    }
 
     cardsContainer.appendChild(card);
     updateTypeFilters();
   }
 
   function extractTypes(pokemon) {
-    if (Array.isArray(pokemon.apiTypes)) return pokemon.apiTypes.map(t => t.name || "Type");
+    if (Array.isArray(pokemon.apiTypes)) return pokemon.apiTypes.map(function (t) { return t.name || "Type"; });
     if (Array.isArray(pokemon.types)) {
-      return pokemon.types.map(t => (typeof t === "object" ? t.name : t) || "Type");
+      return pokemon.types.map(function (t) { return (typeof t === "object" ? t.name : t) || "Type"; });
     }
     return ["—"];
   }
